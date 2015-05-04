@@ -1,0 +1,25 @@
+<div class="row" ng-controller="UsuarioListController">
+    <div class="col-xs-12">
+        <div class="panel panel-info" >
+            <div class="panel-heading">
+                <div class="panel-title">Lista de Usuarios</div>
+            </div>     
+
+            <div class="panel-body" >
+                <table class="table table-bordered table-condensed">
+                    <tr>
+                        <th>#</th>
+                        <th>Nombre</th>
+                    </tr>
+
+                    <tr ng-repeat="usuario in usuarios">
+                        <td>{{usuario.id}}</td>
+                        <td><a href="#/usuario/detail/{{usuario.id}}">{{usuario.nombre}} {{usuario.ape1}} {{usuario.ape2}}</a></td>
+                    </tr>
+                </table> 
+            </div>
+        </div>
+    </div>
+
+
+</div>

@@ -1,0 +1,19 @@
+[
+    {
+        "id":1,
+        "nombre": "Marcos",
+        "ape1": "Salas",
+        "ape2": "Lopez",
+        "fechaNacimiento": 31548664546,
+        "tipoUsuario": "ALUMNO"
+    },
+    {
+        "id":2,
+        "nombre": "Carlos",
+        "ape1": "Diaz",
+        "ape2": "Ortega",
+        "fechaNacimiento": 64874654646,
+        "tipoUsuario": "PROFESOR",
+        "departamento": 3
+    }
+]

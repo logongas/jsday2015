@@ -1,0 +1,9 @@
+{
+    "id":2,
+    "nombre": "Carlos",
+    "ape1": "Diaz",
+    "ape2": "Ortega",
+    "fechaNacimiento": 64874654646,
+    "tipoUsuario": "PROFESOR",
+    "departamento": 3
+}

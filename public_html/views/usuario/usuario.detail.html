@@ -1,0 +1,45 @@
+<div class="row" ng-controller="UsuarioDetailController">
+    <div class="col-xs-12">
+        <div class="panel panel-info" >
+            <div class="panel-heading">
+                <div class="panel-title">Usuario {{usuario.id}}</div>
+            </div>     
+
+            <div class="panel-body" >
+                
+                <form class="form-horizontal" role="form">
+                    <fieldset>
+                        <legend>Datos</legend>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label" for="number">Nombre</label>
+                            <div class="col-sm-9">
+                                <input ng-model="usuario.nombre" type="text" class="form-control" name="nombre" id="nombre">
+                            </div>
+                        </div>                        
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label" for="title">1&ordm; Apellido</label>
+                            <div class="col-sm-9">
+                                <input ng-model="usuario.ape1" type="text" class="form-control" name="ape1" id="ape1">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label" for="title">2&ordm; Apellido</label>
+                            <div class="col-sm-9">
+                                <input ng-model="usuario.ape2" type="text" class="form-control" name="ape2" id="ape2">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label" for="title">Fecha Nacimiento</label>
+                            <div class="col-sm-9">
+                                <input ng-model="usuario.fechaNacimiento" type="date" class="form-control" name="fechaNacimiento" id="fechaNacimiento">
+                            </div>
+                        </div>
+                        
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+</div>
