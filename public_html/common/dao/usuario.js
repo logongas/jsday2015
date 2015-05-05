@@ -1,6 +1,6 @@
 
-UsuarioDAO.$inject=['$http'];
-function UsuarioDAO($http) {
+UsuarioRemoteDAO.$inject=['$http'];
+function UsuarioRemoteDAO($http) {
     
     
     this.find=function() {
@@ -31,4 +31,4 @@ function UsuarioDAO($http) {
     
 }
 
-app.service("usuarioDAO",UsuarioDAO);
+app.service("usuarioRemoteDAO",UsuarioRemoteDAO);
