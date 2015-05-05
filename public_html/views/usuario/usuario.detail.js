@@ -10,7 +10,7 @@ function UsuarioDetailController($scope,$routeParams,usuarioService) {
         
         promise.then(function(response){
             $scope.usuario=response.data;
-            $scope.usuario.fechaNacimiento=new Date($scope.usuario.fechaNacimiento);            
+            //$scope.usuario.fechaNacimiento=new Date($scope.usuario.fechaNacimiento);            
         },function(response) {
             alert("Fallo la petición:" + response.status);
         });
