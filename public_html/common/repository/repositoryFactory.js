@@ -2,7 +2,7 @@
 Repository.$inject=['remoteDAOFactory','entityName'];
 function Repository(remoteDAOFactory,entityName) {   
     this.entityName=entityName;
-    this.remoteDAO=remoteDAOFactory.getRemoteDAO(that.entityName);
+    this.remoteDAO=remoteDAOFactory.getRemoteDAO(this.entityName);
     
     
     this.find=function() {
@@ -43,4 +43,23 @@ function RepositoryFactory($injector) {
    };
 }
 
-app.service("repositoryFactory",RepositoryFactory);
+RepositoryFactoryProvider.$inject = ['$injector'];
+function RepositoryFactoryProvider() {
+   var extendRepository = {
+   };
+
+   this.setExtendRepository = function (entityName, fn) {
+      extendRepository[entityName] = fn;
+   };
+
+   this.$get = ['$injector', function ($injector) {
+      var locals = {
+         extendRepository: extendRepository
+      };
+      return $injector.instantiate(RepositoryFactory, locals);
+    }];
+
+}
+
+
+app.provider("repositoryFactory",RepositoryFactoryProvider);

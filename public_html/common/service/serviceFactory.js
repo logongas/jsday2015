@@ -1,14 +1,14 @@
 
-Service.$inject=['remoteDAOFactory','entityName'];
-function Service(remoteDAOFactory,entityName) {
+Service.$inject=['repositoryFactory','entityName'];
+function Service(repositoryFactory,entityName) {
     
     this.entityName=entityName;
-    this.remoteDAO=remoteDAOFactory.getRemoteDAO(this.entityName);
+    this.repository=repositoryFactory.getRepository(this.entityName);
     
     
     this.find=function() {
 
-        var promise = this.remoteDAO.find();
+        var promise = this.repository.find();
 
         return promise;
         
@@ -16,7 +16,7 @@ function Service(remoteDAOFactory,entityName) {
     
     this.get=function(id) {
         
-        var promise = this.remoteDAO.get(id);
+        var promise = this.repository.get(id);
 
         return promise;
         
@@ -44,4 +44,25 @@ function ServiceFactory($injector) {
    };
 }
 
-app.service("serviceFactory",ServiceFactory);
+ServiceFactoryProvider.$inject = ['$injector'];
+function ServiceFactoryProvider() {
+   var extendService = {
+   };
+
+   this.setExtendService = function (entityName, fn) {
+      extendService[entityName] = fn;
+   };
+
+   this.$get = ['$injector', function ($injector) {
+      var locals = {
+         extendService: extendService
+      };
+      return $injector.instantiate(ServiceFactory, locals);
+    }];
+
+}
+
+
+
+
+app.provider("serviceFactory",ServiceFactoryProvider);

@@ -33,8 +33,8 @@ function RemoteDAO($http,entityName) {
 }
 
 
-RemoteDAOFactory.$inject = ['$injector'];
-function RemoteDAOFactory($injector) {
+RemoteDAOFactory.$inject = ['$injector','extendRemoteDAO'];
+function RemoteDAOFactory($injector,extendRemoteDAO) {
 
    var remoteDAOs = {
    };
@@ -45,6 +45,15 @@ function RemoteDAOFactory($injector) {
             entityName: entityName
          };
          remoteDAOs[entityName] = $injector.instantiate(RemoteDAO,locals);
+         
+         if (extendRemoteDAO[entityName]) {
+            var locals = {
+               remoteDAO: remoteDAOs[entityName]
+            };
+
+            $injector.invoke(extendRemoteDAO[entityName], undefined, locals);
+         }         
+         
       }
 
 
@@ -52,4 +61,23 @@ function RemoteDAOFactory($injector) {
    };
 }
 
-app.service("remoteDAOFactory",RemoteDAOFactory);
+RemoteDAOFactoryProvider.$inject = ['$injector'];
+function RemoteDAOFactoryProvider() {
+   var extendRemoteDAO = {
+   };
+
+   this.setExtendRemoteDAO = function (entityName, fn) {
+      extendRemoteDAO[entityName] = fn;
+   };
+
+   this.$get = ['$injector', function ($injector) {
+      var locals = {
+         extendRemoteDAO: extendRemoteDAO
+      };
+      return $injector.instantiate(RemoteDAOFactory, locals);
+    }];
+
+}
+
+
+app.provider("remoteDAOFactory",RemoteDAOFactoryProvider);
