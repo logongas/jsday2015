@@ -12,6 +12,10 @@ function UsuarioListController($scope,serviceFactory) {
     };
 
     
+    $scope.btnShowAlert=function() {
+        serviceFactory.getService("usuario").showAlert();
+    }
+    
     $scope.find();
     
 }
