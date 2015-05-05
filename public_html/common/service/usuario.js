@@ -1,30 +1,18 @@
 
-UsuarioService.$inject=['$http'];
-function UsuarioService($http) {
+UsuarioService.$inject=['usuarioRepository'];
+function UsuarioService(usuarioRepository) {
     
     
     this.find=function() {
-        
-        var config = {
-          method: "GET",
-          url: "api/usuario/all.json"
-        };
 
-        var promise = $http(config);
-
+        var promise = usuarioRepository.find();
         return promise;
         
     };
     
-    this.get=function(number) {
-        
-        var config = {
-          method: "GET",
-          url: "api/usuario/" + number + ".json" 
-        };
+    this.get=function(id) {
 
-        var promise = $http(config);
-
+        var promise =usuarioRepository.get(id);
         return promise;
         
     };    
