@@ -7,7 +7,7 @@ function UsuarioService($http) {
         
         var config = {
           method: "GET",
-          url: "/jsday2015/datos/usuarios.json"
+          url: "api/usuario/all.json"
         };
 
         var promise = $http(config);
@@ -20,7 +20,7 @@ function UsuarioService($http) {
         
         var config = {
           method: "GET",
-          url: "/jsday2015/datos/usuario" + number + ".json" 
+          url: "api/usuario/" + number + ".json" 
         };
 
         var promise = $http(config);
