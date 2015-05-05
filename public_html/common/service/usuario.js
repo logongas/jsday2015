@@ -16,11 +16,11 @@ function UsuarioService($http) {
         
     };
     
-    this.get=function(number) {
+    this.get=function(id) {
         
         var config = {
           method: "GET",
-          url: "api/usuario/" + number + ".json" 
+          url: "api/usuario/" + id + ".json" 
         };
 
         var promise = $http(config);
