@@ -4,5 +4,6 @@
     "ape1": "Salas",
     "ape2": "Lopez",
     "fechaNacimiento": 31548664546,
-    "tipoUsuario": "ALUMNO"
+    "tipoUsuario": "ALUMNO",
+    "$className":"usuario"
 }

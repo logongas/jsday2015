@@ -14,7 +14,7 @@
 
                     <tr ng-repeat="usuario in usuarios">
                         <td>{{usuario.id}}</td>
-                        <td><a href="#/usuario/detail/{{usuario.id}}">{{usuario.nombre}} {{usuario.ape1}} {{usuario.ape2}}</a></td>
+                        <td><a href="#/usuario/detail/{{usuario.id}}">{{usuario.getNombreCompleto()}}</a></td>
                     </tr>
                 </table> 
                 

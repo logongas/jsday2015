@@ -1,24 +1,38 @@
 
-Repository.$inject = ['remoteDAOFactory', 'entityName'];
-function Repository(remoteDAOFactory, entityName) {
+Repository.$inject = ['$q', 'remoteDAOFactory', 'richModel', 'entityName'];
+function Repository($q, remoteDAOFactory, richModel, entityName) {
     this.entityName = entityName;
     this.remoteDAO = remoteDAOFactory.getRemoteDAO(this.entityName);
 
 
     this.find = function () {
 
-        var promise = this.remoteDAO.find();
+        var deferred = $q.defer();
 
-        return promise;
+        this.remoteDAO.find().then(function (data) {
+            richModel.extend(data);
+            deferred.resolve(data);
+        }, function (data) {
+            richModel.extend(data);
+            deferred.reject(data);
+        });
+
+        return deferred.promise;
 
     };
 
     this.get = function (id) {
+        var deferred = $q.defer();
 
-        var promise = this.remoteDAO.get(id);
+        this.remoteDAO.get(id).then(function (data) {
+            richModel.extend(data);
+            deferred.resolve(data);
+        }, function (data) {
+            richModel.extend(data);
+            deferred.reject(data);
+        });
 
-        return promise;
-
+        return deferred.promise;
     };
 
 }

@@ -5,7 +5,8 @@
         "ape1": "Salas",
         "ape2": "Lopez",
         "fechaNacimiento": 31548664546,
-        "tipoUsuario": "ALUMNO"
+        "tipoUsuario": "ALUMNO",
+        "$className":"usuario"
     },
     {
         "id":2,
@@ -14,6 +15,7 @@
         "ape2": "Ortega",
         "fechaNacimiento": 64874654646,
         "tipoUsuario": "PROFESOR",
-        "departamento": 3
+        "departamento": 3,
+        "$className":"usuario"
     }
 ]
