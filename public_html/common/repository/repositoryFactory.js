@@ -10,7 +10,7 @@ function Repository($q, remoteDAOFactory, richModel, entityName) {
         var deferred = $q.defer();
 
         this.remoteDAO.find().then(function (data) {
-            richModel.extend(data);
+            richModel.transform(data);
             deferred.resolve(data);
         }, function (data) {
             richModel.extend(data);
@@ -25,7 +25,7 @@ function Repository($q, remoteDAOFactory, richModel, entityName) {
         var deferred = $q.defer();
 
         this.remoteDAO.get(id).then(function (data) {
-            richModel.extend(data);
+            richModel.transform(data);
             deferred.resolve(data);
         }, function (data) {
             richModel.extend(data);

@@ -2,15 +2,15 @@
 RichModel.$inject = ['transformers'];
 function RichModel(transformers) {
 
-    this.extend = function (object) {
-        transform(object, transformers);
+    this.transform = function (object) {
+        applyTransforms(object, transformers);
     };
 
 
-    function transform(object, transformers) {
+    function applyTransforms(object, transformers) {
         if (angular.isArray(object)) {
             for (var i = 0; i < object.length; i++) {
-                transform(object[i], transformers);
+                applyTransforms(object[i], transformers);
             }
 
         } else if ((typeof (object) === "object") && (object !== null)) {
@@ -21,15 +21,15 @@ function RichModel(transformers) {
                 }
                 var value = object[key];
                 if (typeof (value) === "object") {
-                    transform(value, transformers);
+                    applyTransforms(value, transformers);
                 }
             }
-            applyTransforms(object, transformers);
+            objectTransforms(object, transformers);
         }
 
     }
 
-    function applyTransforms(object, transformers, propertyPath) {
+    function objectTransforms(object, transformers, propertyPath) {
         var className = object['$className'];
 
         //aplicamos los transformadores globales
