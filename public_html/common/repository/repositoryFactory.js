@@ -1,23 +1,21 @@
 
 Repository.$inject=['remoteDAOFactory','entityName'];
-function Repository(remoteDAOFactory,entityName) {
-    var that=this;
-    
-    that.entityName=entityName;
-    that.remoteDAO=remoteDAOFactory.getRemoteDAO(that.entityName);
+function Repository(remoteDAOFactory,entityName) {   
+    this.entityName=entityName;
+    this.remoteDAO=remoteDAOFactory.getRemoteDAO(that.entityName);
     
     
-    that.find=function() {
+    this.find=function() {
 
-        var promise = that.remoteDAO.find();
+        var promise = this.remoteDAO.find();
 
         return promise;
         
     };
     
-    that.get=function(id) {
+    this.get=function(id) {
         
-        var promise = that.remoteDAO.get(id);
+        var promise = this.remoteDAO.get(id);
 
         return promise;
         

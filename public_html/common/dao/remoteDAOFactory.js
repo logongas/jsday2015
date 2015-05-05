@@ -1,15 +1,14 @@
 
 RemoteDAO.$inject=['$http','entityName'];
 function RemoteDAO($http,entityName) {
-    var that=this;
     
-    that.entityName=entityName;
+    this.entityName=entityName;
     
-    that.find=function() {
+    this.find=function() {
         
         var config = {
           method: "GET",
-          url: "api/" + that.entityName + "/all.json"
+          url: "api/" + this.entityName + "/all.json"
         };
 
         var promise = $http(config);
@@ -18,11 +17,11 @@ function RemoteDAO($http,entityName) {
         
     };
     
-    that.get=function(id) {
+    this.get=function(id) {
         
         var config = {
           method: "GET",
-          url: "api/" + that.entityName + "/" + id + ".json" 
+          url: "api/" + this.entityName + "/" + id + ".json" 
         };
 
         var promise = $http(config);
