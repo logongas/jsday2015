@@ -1,9 +1,9 @@
 
-UsuarioListController.$inject=['$scope','usuarioService'];
-function UsuarioListController($scope,usuarioService) {
+UsuarioListController.$inject=['$scope','serviceFactory'];
+function UsuarioListController($scope,serviceFactory) {
     
     $scope.find=function() {
-        var promise=usuarioService.find();
+        var promise=serviceFactory.getService("usuario").find();
         promise.then(function(response){
             $scope.usuarios=response.data;
         },function(response) {

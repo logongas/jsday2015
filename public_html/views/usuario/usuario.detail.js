@@ -1,12 +1,12 @@
 
-UsuarioDetailController.$inject=['$scope','$routeParams','usuarioService'];
-function UsuarioDetailController($scope,$routeParams,usuarioService) {
+UsuarioDetailController.$inject=['$scope','$routeParams','serviceFactory'];
+function UsuarioDetailController($scope,$routeParams,serviceFactory) {
     
     $scope.id=$routeParams.id;
     
     $scope.get=function(id) {
         
-        var promise=usuarioService.get(id);
+        var promise=serviceFactory.getService("usuario").get(id);
         
         promise.then(function(response){
             $scope.usuario=response.data;
