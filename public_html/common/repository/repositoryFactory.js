@@ -2,7 +2,7 @@
 Repository.$inject=['remoteDAOFactory','entityName'];
 function Repository(remoteDAOFactory,entityName) {   
     this.entityName=entityName;
-    this.remoteDAO=remoteDAOFactory.getRemoteDAO(that.entityName);
+    this.remoteDAO=remoteDAOFactory.getRemoteDAO(this.entityName);
     
     
     this.find=function() {
