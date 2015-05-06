@@ -11,3 +11,5 @@ El código tiene varias ramas. En cada una de ellas se va añadiendo código des
   4. **factory_con_providers_completo** : Usar los providers para permitir extender las clases
   5. **rich_model** : Enriquecer el modelo
   6. **model_validator** : Validar el modelo
+
+La presentación la puedes ver [aquí](https://slides.com/logongas/jsday-arquitectura-3-capas-modelos-ricos)
