@@ -1,38 +1,23 @@
-app.config(['richModelProvider', function (richModelProvider) {
+app.config(['richModelProvider', function(richModelProvider) {
 
-        richModelProvider.addEntityTransformer('usuario', ['departamentoService', function (departamentoService) {
+  richModelProvider.addEntityTransformer('usuario',['departamentoService',function(departamentoService) {
 
+      function getNombreCompleto() {
+        return this.nombre + " " + this.ape1 + " " + this.ape2;
+      }
 
-                var Usuario = {
-                    getNombreCompleto: function () {
-                        return this.nombre + " " + this.ape1 + " " + this.ape2;
-                    },
-                    getNombreDepartamento: function () {
-                        return departamentoService.getNombre(this.departamento);
-                    },
-                    $validators: [
-                        {
-                            propertyName: function () {
-                                return "Confirmar Contraseña"
-                            },
-                            message: 'El valor de "{{password}}" no  es  igual  al de "{{confirmPassword}}"',
-                            rule: function () {
-                                if (this.password === this.confirmPassword) {
-                                    return  true;
-                                } else {
-                                    return  false;
-                                }
-                            }
-                        }
-                    ]
-                }
+      function getNombreDepartamento () {
+        return departamentoService.getNombre(this.departamento);
+      }
 
-                return function (object) {
-                    
-                    angular.extend(object, Usuario);
-                    object.fechaNacimiento = new Date(object.fechaNacimiento);
+      return function (object) {
+        object.getNombreCompleto = getNombreCompleto;
+        if (object.tipoUsuario === "PROFESOR") {
+          object.getNombreDepartamento = getNombreDepartamento;
+        }
 
-                };
-            }]);
-
+        object.fechaNacimiento = new Date(object.fechaNacimiento);
+      };
     }]);
+
+}]);

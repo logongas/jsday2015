@@ -6,7 +6,7 @@
             </div>     
 
             <div class="panel-body" >
-
+                
                 <form class="form-horizontal" role="form">
                     <fieldset>
                         <legend>Datos</legend>
@@ -34,33 +34,7 @@
                                 <input ng-model="usuario.fechaNacimiento" type="date" class="form-control" name="fechaNacimiento" id="fechaNacimiento">
                             </div>
                         </div>
-                        <div class="form-group">
-                            <label class="col-sm-3 control-label" for="title">Contrase&ntilde;a</label>
-                            <div class="col-sm-9">
-                                <input ng-model="usuario.password" type="password" class="form-control" name="password" id="password">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-sm-3 control-label" for="title">Confirmar contrase&ntilde;a</label>
-                            <div class="col-sm-9">
-                                <input ng-model="usuario.confirmPassword" type="password" class="form-control" name="confirmPassword" id="confirmPassword">
-                            </div>
-                        </div>    
-                        <button class="btn" ng-click="btnUpdate()" >Actualizar</button>
-                        <br>
-                        <br>
-                        <div ng-show="businessMessages.length > 0">
-                            <div class="alert alert-danger" style="text-align:left"   >
-                                <button type="button" class="close" ng-click="businessMessages = []">&times;</button>
-                                <strong>Se han producido los siguientes errores:</strong>
-                                <ul >
-                                    <li ng-repeat="businessMessage in businessMessages">
-                                        <strong>{{businessMessage.propertyName}}:&nbsp;&nbsp;</strong>{{businessMessage.message}}
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>                       
-
+                        
                     </fieldset>
                 </form>
             </div>

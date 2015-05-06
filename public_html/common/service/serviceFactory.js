@@ -22,14 +22,6 @@ function Service(repositoryFactory, entityName) {
 
     };
 
-    this.update = function (id, entity) {
-
-        var promise = this.repository.update(id, entity);
-
-        return promise;
-
-    };
-
 }
 
 
