@@ -1,23 +1,38 @@
-app.config(['richModelProvider', function(richModelProvider) {
+app.config(['richModelProvider', function (richModelProvider) {
 
-  richModelProvider.addEntityTransformer('usuario',['departamentoService',function(departamentoService) {
+        richModelProvider.addEntityTransformer('usuario', ['departamentoService', function (departamentoService) {
 
-      function getNombreCompleto() {
-        return this.nombre + " " + this.ape1 + " " + this.ape2;
-      }
 
-      function getNombreDepartamento () {
-        return departamentoService.getNombre(this.departamento);
-      }
+                var Usuario = {
+                    getNombreCompleto: function () {
+                        return this.nombre + " " + this.ape1 + " " + this.ape2;
+                    },
+                    getNombreDepartamento: function () {
+                        return departamentoService.getNombre(this.departamento);
+                    },
+                    $validators: [
+                        {
+                            propertyName: function () {
+                                return "Confirmar Contraseña"
+                            },
+                            message: 'El valor de "{{password}}" no  es  igual  al de "{{confirmPassword}}"',
+                            rule: function () {
+                                if (this.password === this.confirmPassword) {
+                                    return  true;
+                                } else {
+                                    return  false;
+                                }
+                            }
+                        }
+                    ]
+                }
 
-      return function (object) {
-        object.getNombreCompleto = getNombreCompleto;
-        if (object.tipoUsuario === "PROFESOR") {
-          object.getNombreDepartamento = getNombreDepartamento;
-        }
+                return function (object) {
+                    
+                    angular.extend(object, Usuario);
+                    object.fechaNacimiento = new Date(object.fechaNacimiento);
 
-        object.fechaNacimiento = new Date(object.fechaNacimiento);
-      };
+                };
+            }]);
+
     }]);
-
-}]);
