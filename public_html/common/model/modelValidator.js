@@ -1,5 +1,5 @@
-DomainValidator.$inject = ['$injector', '$q', '$interpolate'];
-function DomainValidator($injector, $q, $interpolate) {
+ModelValidator.$inject = ['$injector', '$q', '$interpolate'];
+function ModelValidator($injector, $q, $interpolate) {
 
     this.validate = function (domainObject) {
         var deferred = $q.defer();
@@ -77,4 +77,4 @@ function DomainValidator($injector, $q, $interpolate) {
 
 
 
-app.service("domainValidator", DomainValidator);
+app.service("modelValidator", ModelValidator);

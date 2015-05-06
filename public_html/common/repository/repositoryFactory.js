@@ -1,6 +1,6 @@
 
-Repository.$inject = ['$q', 'remoteDAOFactory', 'richModel', 'domainValidator', 'entityName'];
-function Repository($q, remoteDAOFactory, richModel, domainValidator, entityName) {
+Repository.$inject = ['$q', 'remoteDAOFactory', 'richModel', 'modelValidator', 'entityName'];
+function Repository($q, remoteDAOFactory, richModel, modelValidator, entityName) {
     var that=this;
     this.entityName = entityName;
     this.remoteDAO = remoteDAOFactory.getRemoteDAO(this.entityName);
@@ -38,7 +38,7 @@ function Repository($q, remoteDAOFactory, richModel, domainValidator, entityName
     this.update = function (id, entity) {
         var deferred = $q.defer();
         
-        domainValidator.validate(entity).then(function () {
+        modelValidator.validate(entity).then(function () {
             that.remoteDAO.update(id, entity).then(function (data) {
                 richModel.transform(data);
                 deferred.resolve(data);
